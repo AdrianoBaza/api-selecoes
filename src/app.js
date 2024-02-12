@@ -2,6 +2,9 @@ import express from 'express'
 
 const app = express()
 
+// indicar para o express ler body com json
+app.use(express.json())
+
 // mock
 const selecoes = [
     {id: '1', selecao: 'Brasil', grupo: 'G'},
@@ -10,14 +13,20 @@ const selecoes = [
     {id: '4', selecao: 'Sérvia', grupo: 'G'}
 ]
 
-// cria a rota padrão
+// rota padrão
 app.get('/', (req, res) => {
     res.send('Curso de Node JS')
 })
 
-// lista todas as seleções
+// rota para listar todas as seleções
 app.get('/selecoes', (req, res) => {
     res.send(selecoes)
+})
+
+// rota para cadastrar uma seleção
+app.post('/selecoes', (req, res) => {
+    selecoes.push(req.body)
+    res.status(201).send('Seleção cadastrada com sucesso!')
 })
 
 export default app
