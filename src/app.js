@@ -4,7 +4,7 @@ const port = 3000
 
 // cria a rota padrão
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Curso de Node JS')
 })
 
 // escutar a porta 3000
